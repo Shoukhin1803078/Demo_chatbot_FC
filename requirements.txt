@@ -1,9 +1,11 @@
 Gunicorn
-flask
-langchain
-langchain_openai
+Flask==2.2.3
+Werkzeug==2.2.3
+groq==0.3.1
+Flask-Caching==2.0.2
+Flask-Limiter==3.3.0
+python-docx==0.8.11
 openai
 python-docx
-Flask-Caching
-Flask-Limiter
-googletrans==3.1.0a0
+langchain
+langchain_openai
