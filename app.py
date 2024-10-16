@@ -12,6 +12,62 @@ from docx.shared import RGBColor, Pt
 from docx.enum.style import WD_STYLE_TYPE
 import re
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# app = Flask(__name__)
+
+# # Set up caching
+# app.config['CACHE_TYPE'] = 'simple'
+# cache = Cache(app)
+
+# # Set up rate limiting
+# limiter = Limiter(
+#     key_func=get_remote_address,
+#     app=app,
+#     default_limits=["200 per day", "50 per hour"],
+#     storage_uri="memory://",
+# )
+
+
+# OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+# if not OPENAI_API_KEY:
+#     raise ValueError("No OpenAI API key set for OPENAI_API_KEY environment variable.")
+
+# client = OpenAI(api_key=OPENAI_API_KEY)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app = Flask(__name__)
 
 # Set up caching
@@ -25,13 +81,18 @@ limiter = Limiter(
     default_limits=["200 per day", "50 per hour"],
     storage_uri="memory://",
 )
-
-
+# Set the OpenAI API key (use environment variables in production)
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-if not OPENAI_API_KEY:
-    raise ValueError("No OpenAI API key set for OPENAI_API_KEY environment variable.")
+try:
+    client = OpenAI(api_key=OPENAI_API_KEY)
+    print("OpenAI client initialized successfully.")
+except Exception as e:
+    print(f"Error initializing OpenAI client: {e}")
+    client = None
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+
+
+
 
 
 SYSTEM_MESSAGE_EN = """
